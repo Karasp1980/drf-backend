@@ -37,7 +37,7 @@ SECRET_KEY = 'django-insecure--ni&*f8cfi!)di-#gnhvfc6xu2k^&%)1=_qg4#i&^lncgy4mm(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-karasp1980-drfbackend-j5bulxyvz1o.ws-eu98.gitpod.io']
 
 
 # Application definition
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'posts',
     'comments',
     'likes',
+    'followers',
 ]
 
 MIDDLEWARE = [
