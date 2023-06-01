@@ -61,7 +61,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['8000-karasp1980-drfbackend-j5bulxyvz1o.ws-eu98.gitpod.io']
 ALLOWED_HOSTS = ['localhost', 'bunnyland.herokuapp.com']
 
 
