@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Contact
 
 
-class ContactSerializer(serializers.ModelSerializer):
+class MessageSerializer(serializers.ModelSerializer):
     """
     Serializer for the Contact model
     """
@@ -25,7 +25,7 @@ class ContactSerializer(serializers.ModelSerializer):
         ]
 
 
-class ContactDetailSerializer(ContactSerializer):
+class MessageDetailSerializer(ContactSerializer):
     """
     Serializer for the Contact model used in Detail view
     profile is a read only field so that we dont have to set it on each update
