@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Contact
+from .models import Messaging
 
 
-class MessageSerializer(serializers.ModelSerializer):
+class MessagingSerializer(serializers.ModelSerializer):
     """
-    Serializer for the Contact model
+    Serializer for the Messaging model
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -18,14 +18,14 @@ class MessageSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     class Meta:
-        model = Contact
+        model = Messaging
         fields = [
             'id', 'owner', 'is_owner', 'message', 'created_at',
             'updated_at', 'profile', 'profile_id', 'profile_image',
         ]
 
 
-class MessageDetailSerializer(ContactSerializer):
+class MessagingDetailSerializer(MessagingSerializer):
     """
     Serializer for the Contact model used in Detail view
     profile is a read only field so that we dont have to set it on each update

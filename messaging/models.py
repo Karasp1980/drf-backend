@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from profiles.models import Profile
 
 
-class Messages(models.Model):
+class Messaging(models.Model):
     """
     Contact model, related to Profile
     """
