@@ -11,7 +11,7 @@ from .settings import (
 @api_view()
 def root_route(request):
     return Response({
-        "message": "Welcome to my drf API!"
+        "message": "Welcome to Bunnyland drf API!"
     })
 
 
@@ -41,4 +41,4 @@ def logout_route(request):
 
 @api_view()
 def root_route(request):
-    return Response({"message": "Welcome to my django rest framework API!"})
+    return Response({"message": "Welcome to Bunnyland django rest framework API!"})

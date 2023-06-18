@@ -5,7 +5,7 @@ from profiles.models import Profile
 
 class Messaging(models.Model):
     """
-    Contact model, related to Profile
+    Messaging model, related to Profile
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)

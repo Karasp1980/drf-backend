@@ -63,7 +63,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOST'),
-   'localhost',
+   'localhost', '8000-karasp1980-drfbackend-j5bulxyvz1o.ws-eu100.gitpod.io',
 ]
 
 
@@ -94,7 +94,7 @@ INSTALLED_APPS = [
     'comments',
     'likes',
     'followers',
-    
+    'messaging',  
 ]
 
 SITE_ID = 1

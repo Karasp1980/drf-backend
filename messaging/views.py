@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
-from events_api.permissions import IsOwnerOrReadOnly
+from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Messaging
-from .serializers import MessagingSerializer, ContactDetailSerializer
+from .serializers import MessagingSerializer, MessagingDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 
@@ -11,7 +11,7 @@ class MessagingList(generics.ListCreateAPIView):
     """
     serializer_class = MessagingSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Contact.objects.all()
+    queryset = Messaging.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['profile']
 
@@ -25,4 +25,4 @@ class MessagingDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = MessagingDetailSerializer
-    queryset = Contact.objects.all()
+    queryset = Messaging.objects.all()
