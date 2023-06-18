@@ -9,7 +9,7 @@ class MessagingList(generics.ListCreateAPIView):
     """
     List message or create a message if logged in.
     """
-    serializer_class = ContactSerializer
+    serializer_class = MessagingSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Contact.objects.all()
     filter_backends = [DjangoFilterBackend]
@@ -24,5 +24,5 @@ class MessagingDetail(generics.RetrieveUpdateDestroyAPIView):
     Retrieve a message, or update or delete it by id.
     """
     permission_classes = [IsOwnerOrReadOnly]
-    serializer_class = ContactDetailSerializer
+    serializer_class = MessagingDetailSerializer
     queryset = Contact.objects.all()
