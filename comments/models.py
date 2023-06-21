@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
+from adoption.models import Adoption
 
 
 class Comment(models.Model):
