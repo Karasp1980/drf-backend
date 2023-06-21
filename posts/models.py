@@ -26,7 +26,6 @@ class Post(models.Model):
     ]
 
     category_choices = [
-    ('new_home_needed', 'New home needed'),
     ('tip', 'Tip'),
     ('help_needed', 'Help needed'),
     ('other', 'Other'),
