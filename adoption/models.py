@@ -46,7 +46,7 @@ class Adoption(models.Model):
     )
 
     sex = models.CharField(
-        max_length=32, choices=category_choices, blank=True
+        max_length=32, choices=sex_choices, blank=True
     )
 
 
