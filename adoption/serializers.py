@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from posts.models import Adoption
+from adoption.models import Adoption
 from likes.models import Like
 
 
