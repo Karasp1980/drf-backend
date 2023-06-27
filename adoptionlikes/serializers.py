@@ -1,18 +1,18 @@
 from django.db import IntegrityError
 from rest_framework import serializers
-from likes.models import Like
+from adoptionlikes.models import Adoptionlike
 
 
-class LikeSerializer(serializers.ModelSerializer):
+class AdoptionlikeSerializer(serializers.ModelSerializer):
     """
-    Serializer for the Like model
-    The create method handles the unique constraint on 'owner' and 'post'
+    Serializer for the Adoptionlike model
+    The create method handles the unique constraint on 'owner' and 'adoption'
     """
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
-        model = Like
-        fields = ['id', 'created_at', 'owner', 'post']
+        model = Adoptionlike
+        fields = ['id', 'created_at', 'owner', 'adoption']
 
     def create(self, validated_data):
         try:

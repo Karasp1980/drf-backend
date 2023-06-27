@@ -1,11 +1,11 @@
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
-from .models import Comment
+from .models import Adoptioncomment
 
 
-class CommentSerializer(serializers.ModelSerializer):
+class AdoptioncommentSerializer(serializers.ModelSerializer):
     """
-    Serializer for the Comment model
+    Serializer for the Adoptioncomment model
     Adds three extra fields when returning a list of Comment instances
     """
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -26,18 +26,17 @@ class CommentSerializer(serializers.ModelSerializer):
         return naturaltime(obj.updated_at)
 
     class Meta:
-        model = Comment
+        model = Adoptioncomment
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
-            'post', 'created_at', 'updated_at', 'content',
+            'adoption', 'created_at', 'updated_at', 'content',
         ]
 
 
-class CommentDetailSerializer(CommentSerializer):
+class AdoptioncommentDetailSerializer(AdoptioncommentSerializer):
     """
-    Serializer for the Comment model used in Detail view
-    Post is a read only field so that we dont have to set it on each update
+    Serializer for the Adoptioncomment model used in Detail view
+    Adoption is a read only field so that we dont have to set it on each update
     """
-    post = serializers.ReadOnlyField(source='post.id')
+    adoption = serializers.ReadOnlyField(source='adoption.id')
    
-    

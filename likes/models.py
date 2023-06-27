@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
-from adoption.models import Adoption
+
 
 
 class Like(models.Model):
@@ -16,14 +16,10 @@ class Like(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     
-    adoption = models.ForeignKey(
-        Adoption, related_name='likes',on_delete=models.CASCADE, blank=True, null=True
-    )
-    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-created_at']
-        unique_together = ['owner', 'post', 'adoption'] 
+        unique_together = ['owner', 'post'] 
 
     def __str__(self):
         return f'{self.owner} {self.post}'

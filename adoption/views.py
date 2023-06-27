@@ -14,8 +14,8 @@ class AdoptionList(generics.ListCreateAPIView):
     serializer_class = AdoptionSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Adoption.objects.annotate(
-        likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
+        adoptionlikes_count=Count('adoptionlikes', distinct=True),
+        adoptioncomments_count=Count('adoptioncomment', distinct=True)
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
@@ -24,7 +24,7 @@ class AdoptionList(generics.ListCreateAPIView):
     ]
     filterset_fields = [
         'owner__followed__owner__profile',
-        'likes__owner__profile',
+        'adoptionlikes__owner__profile',
         'owner__profile',
     ]
    
@@ -36,14 +36,14 @@ class AdoptionList(generics.ListCreateAPIView):
     'age',
     'content',
     'created_at',
-    'likes_count',
-    'comments_count',
-    'likes__created_at',
+    'adoptionlikes_count',
+    'adoptioncomments_count',
+    'adoptionlikes__created_at',
 ]
     ordering_fields = [
-        'likes_count',
-        'comments_count',
-        'likes__created_at',
+        'adoptionlikes_count',
+        'adoptioncomments_count',
+        'adoptionlikes__created_at',
     ]
 
     def perform_create(self, serializer):
@@ -52,11 +52,11 @@ class AdoptionList(generics.ListCreateAPIView):
 
 class AdoptionDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Retrieve a post and edit or delete it if you own it.
+    Retrieve a adoption post and edit or delete it if you own it.
     """
     serializer_class = AdoptionSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Adoption.objects.annotate(
-        likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
+        likes_count=Count('adoptionlikes', distinct=True),
+        comments_count=Count('adoptioncomment', distinct=True)
     ).order_by('-created_at')
