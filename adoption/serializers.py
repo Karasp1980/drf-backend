@@ -10,7 +10,7 @@ class AdoptionSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     adoptionlike_id = serializers.SerializerMethodField()
     adoptionlikes_count = serializers.ReadOnlyField()
-    comments_count = serializers.ReadOnlyField()
+    adoptioncomments_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -42,5 +42,5 @@ class AdoptionSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
             'title', 'content', 'image', 'image_filter',
-            'adoptionlike_id', 'adoptionlikes_count', 'comments_count', 'sex', 'location', 'age'
+            'adoptionlike_id', 'adoptionlikes_count', 'adoptioncomments_count', 'breed', 'location', 'sex', 'age'
         ]

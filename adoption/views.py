@@ -57,6 +57,6 @@ class AdoptionDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = AdoptionSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Adoption.objects.annotate(
-        likes_count=Count('adoptionlikes', distinct=True),
-        comments_count=Count('adoptioncomment', distinct=True)
+        adoptionlikes_count=Count('adoptionlikes', distinct=True),
+        adoptioncomments_count=Count('adoptioncomment', distinct=True)
     ).order_by('-created_at')
