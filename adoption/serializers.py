@@ -29,7 +29,7 @@ class AdoptionSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_like_id(self, obj):
+    def get_adoptionlike_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
             adoptionlike = Adoptionlike.objects.filter(owner=user, adoption=obj).first()
