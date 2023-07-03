@@ -25,7 +25,7 @@ class AdoptionrequestSerializer(serializers.ModelSerializer):
         ]
 
 
-class AdoptionrequestDetailSerializer(MessagingSerializer):
+class AdoptionrequestDetailSerializer(AdoptionrequestSerializer):
     """
     Serializer for the Adoptionrequest model used in Detail view
     profile is a read only field so that we dont have to set it on each update

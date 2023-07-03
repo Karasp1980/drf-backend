@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Adoptionrequest
-from .serializers import MessagingSerializer, MessagingDetailSerializer
+from .serializers import AdoptionrequestSerializer, AdoptionrequestDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 
@@ -24,5 +24,5 @@ class AdoptionrequestDetail(generics.RetrieveUpdateDestroyAPIView):
     Retrieve a adoptionequest, or update or delete it by id.
     """
     permission_classes = [IsOwnerOrReadOnly]
-    serializer_class = AdoptionequestDetailSerializer
+    serializer_class = AdoptionrequestDetailSerializer
     queryset = Adoptionrequest.objects.all()

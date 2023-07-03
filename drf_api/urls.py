@@ -37,4 +37,5 @@ urlpatterns = [
     path('', include('adoption.urls')),
     path('', include('adoptionlikes.urls')),
     path('', include('adoptioncomments.urls')),
+    path('', include('adoptionrequest.urls')),
 ]
