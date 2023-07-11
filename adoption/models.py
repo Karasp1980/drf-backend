@@ -39,7 +39,7 @@ class Adoption(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
-    adoptionrequest = models.OneToOneField(Adoptionrequest, on_delete=models.CASCADE)
+    adoptionrequest = models.ForeignKey(Adoptionrequest, on_delete=models.CASCADE)
     image = models.ImageField(
         upload_to='images/', default='../default_post_rgq6aq', blank=True
     )
