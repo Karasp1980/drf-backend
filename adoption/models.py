@@ -58,6 +58,8 @@ class Adoption(models.Model):
 
     breed = models.CharField(max_length=255, blank=True)
 
+    adoptionrequest = models.ForeignKey(Adoptionrequest, on_delete=models.CASCADE)
+
     class Meta:
         ordering = ['-created_at']
 
