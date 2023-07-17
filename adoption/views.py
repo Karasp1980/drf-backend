@@ -1,11 +1,10 @@
 from django.db.models import Count
-from rest_framework import generics, permissions, filters
+from rest_framework import generics, permissions, filters, serializers
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Adoption
 from .serializers import AdoptionSerializer
 from adoptionrequest.models import Adoptionrequest
-from rest_framework import serializers
 
 class AdoptionList(generics.ListCreateAPIView):
     """
@@ -50,7 +49,7 @@ class AdoptionList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
     
-    adoptionrequest = serializers.ReadOnlyField(source='adoptionrequest.id')   
+       
 
 
 class AdoptionDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -63,4 +62,4 @@ class AdoptionDetail(generics.RetrieveUpdateDestroyAPIView):
         adoptionlikes_count=Count('adoptionlikes', distinct=True),
         adoptioncomments_count=Count('adoptioncomment', distinct=True)
     ).order_by('-created_at')
-    adoptionrequest = serializers.ReadOnlyField(source='adoptionrequest.id')
+    

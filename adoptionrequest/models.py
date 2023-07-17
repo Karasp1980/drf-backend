@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from profiles.models import Profile
-
+from adoption.models import Adoption
 
 class Adoptionrequest(models.Model):
     """
@@ -15,6 +15,7 @@ class Adoptionrequest(models.Model):
     adoptionmessage = models.TextField(max_length=255)    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    adoption = models.ForeignKey(Adoption, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ["-created_at"]

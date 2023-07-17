@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Adoptionrequest
+from adoption.models import Adoption
 
 
 class AdoptionrequestSerializer(serializers.ModelSerializer):
@@ -16,14 +17,16 @@ class AdoptionrequestSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
+    
+    adoption = serializers.ReadOnlyField(source='adoption.id')
 
     class Meta:
         model = Adoptionrequest
         fields = [
             'id', 'owner', 'is_owner', 'name', 'phone', 'email', 'adoptionmessage', 'created_at',
-            'updated_at', 'profile', 'profile_id', 'profile_image',
+            'updated_at', 'profile', 'profile_id', 'profile_image','adoption',
         ]
-
+   
 
 class AdoptionrequestDetailSerializer(AdoptionrequestSerializer):
     """

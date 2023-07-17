@@ -36,7 +36,6 @@ class AdoptionSerializer(serializers.ModelSerializer):
             return adoptionlike.id if adoptionlike else None
         return None
         
-    adoptionrequest = serializers.ReadOnlyField(source='adoptionrequest.id')
 
     class Meta:
         model = Adoption
@@ -45,5 +44,5 @@ class AdoptionSerializer(serializers.ModelSerializer):
             'profile_image', 'created_at', 'updated_at',
             'title', 'content', 'image', 'image_filter',
             'adoptionlike_id', 'adoptionlikes_count', 'adoptioncomments_count', 
-            'breed', 'location', 'sex', 'age', 'adoptionrequest'
+            'breed', 'location', 'sex', 'age',
         ]

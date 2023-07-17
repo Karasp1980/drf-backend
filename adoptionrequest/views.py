@@ -1,8 +1,9 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, serializers
 from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Adoptionrequest
 from .serializers import AdoptionrequestSerializer, AdoptionrequestDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+
 
 
 class AdoptionrequestList(generics.ListCreateAPIView):
@@ -14,9 +15,12 @@ class AdoptionrequestList(generics.ListCreateAPIView):
     queryset = Adoptionrequest.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['profile']
+    adoption = serializers.ReadOnlyField(source='adoption.id')  
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+    
 
 
 class AdoptionrequestDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -26,3 +30,4 @@ class AdoptionrequestDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = AdoptionrequestDetailSerializer
     queryset = Adoptionrequest.objects.all()
+    adoption = serializers.ReadOnlyField(source='adoption.id')
