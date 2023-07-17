@@ -34,3 +34,4 @@ class AdoptionrequestDetailSerializer(AdoptionrequestSerializer):
     profile is a read only field so that we dont have to set it on each update
     """
     profile = serializers.ReadOnlyField(source='profile.id')
+    adoption = serializers.ReadOnlyField(source='adoption.id')
