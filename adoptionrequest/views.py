@@ -16,13 +16,10 @@ class AdoptionrequestList(generics.ListCreateAPIView):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['profile']
     adoption = serializers.ReadOnlyField(source='adoption.id') 
-    filter_fields = ('adoption_owner_profile', ) 
+    filter_fields = ('adoption_owner_profile', )
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
-
-    
-
 
 class AdoptionrequestDetail(generics.RetrieveUpdateDestroyAPIView):
     """
