@@ -18,7 +18,7 @@ class AdoptionrequestSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
     
-    adoption = serializers.ReadOnlyField(source='adoption.id')
+    #adoption = serializers.ReadOnlyField(source='adoption.id')
 
     class Meta:
         model = Adoptionrequest
