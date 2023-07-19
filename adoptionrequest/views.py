@@ -15,17 +15,11 @@ class AdoptionrequestList(generics.ListCreateAPIView):
     queryset = Adoptionrequest.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['profile']
-    adoption = serializers.ReadOnlyField(source='adoption.id')  
+    adoption = serializers.ReadOnlyField(source='adoption.id') 
+    filter_fields = ('adoption_owner_profile', ) 
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
-
-    def get_queryset(self):
-        profile_id = self.request.query_params.get('profile', None)
-        
-        if profile_id:
-            return Adoptionrequest.objects.filter(adoption__owner__profile=profile_id)
-            return Adoptionrequest.objects.all()
 
     
 

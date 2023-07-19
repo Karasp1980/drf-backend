@@ -14,17 +14,19 @@ class AdoptionrequestSerializer(serializers.ModelSerializer):
         source='owner.profile.image.url'
     )
 
+     adoption_owner_profile = serializers.ReadOnlyField(source='adoption.owner.profile.id')
+
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
     
-    owner_profile = serializers.ReadOnlyField(source="adoption.owner.profile.id")
+    adoption_owner_profile = serializers.ReadOnlyField(source="adoption.owner.profile.id")
 
     class Meta:
         model = Adoptionrequest
         fields = [
             'id', 'owner', 'is_owner', 'name', 'phone', 'email', 'adoptionmessage', 'created_at',
-            'updated_at', 'profile', 'profile_id', 'profile_image','adoption',
+            'updated_at', 'profile', 'profile_id', 'profile_image','adoption_owner_profile',
         ]
    
 
