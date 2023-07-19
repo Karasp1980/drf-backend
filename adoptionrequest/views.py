@@ -20,6 +20,13 @@ class AdoptionrequestList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+    def get_queryset(self):
+        profile_id = self.request.query_params.get('profile', None)
+        
+        if profile_id:
+            return Adoptionrequest.objects.filter(adoption__owner__profile=profile_id)
+            return Adoptionrequest.objects.all()
+
     
 
 
