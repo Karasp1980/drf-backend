@@ -15,7 +15,6 @@ class Adoptionrequest(models.Model):
     adoptionmessage = models.TextField(max_length=255)    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    adoption = models.ForeignKey(Adoption, on_delete=models.CASCADE)
     adoption_owner_profile = models.ForeignKey(Adoption, on_delete=models.CASCADE, related_name="adoption_owner_profile")
 
     class Meta:
