@@ -14,9 +14,7 @@ class AdoptionrequestList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Adoptionrequest.objects.all()
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['profile']
-    adoption = serializers.ReadOnlyField(source='adoption.id') 
-    filterset_fields = ['adoption_owner_profile']
+    filterset_fields = ['profile', 'adoption_owner_profile']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -28,4 +26,4 @@ class AdoptionrequestDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = AdoptionrequestDetailSerializer
     queryset = Adoptionrequest.objects.all()
-    adoption = serializers.ReadOnlyField(source='adoption.id')
+   
