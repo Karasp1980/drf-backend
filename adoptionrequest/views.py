@@ -14,7 +14,8 @@ class AdoptionrequestList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Adoptionrequest.objects.all()
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['profile', 'adoption_owner_profile']
+    filterset_fields = ['adoption']
+    # filterset_fields = ['profile', 'adoption_owner_profile']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
