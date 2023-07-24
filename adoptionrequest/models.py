@@ -8,7 +8,7 @@ class Adoptionrequest(models.Model):
     Adoption request model, related to Profile
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    # profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     name = models.TextField(max_length=255)
     phone = models.CharField(max_length=20)
     email = models.EmailField()
