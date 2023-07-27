@@ -21,4 +21,4 @@ class Adoptionrequest(models.Model):
         ordering = ["-created_at"]
 
     def __str__(self):
-        return f"{self.owner}: {self.name} - Phone:{self.phone} - Email:{self.email} - Message: {self.adoptionmessage}"
+        return f"{self.owner}: {self.name} - Phone:{self.phone} - Email:{self.email} - Message: {self.adoptionmessage} -"
