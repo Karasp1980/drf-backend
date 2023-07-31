@@ -14,8 +14,6 @@ class AdoptionrequestSerializer(serializers.ModelSerializer):
         source='owner.profile.image.url'
      )
 
-    #adoption = serializers.ReadOnlyField(source='adoption.owner.profile.id')
-
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
