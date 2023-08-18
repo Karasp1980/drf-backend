@@ -13,6 +13,7 @@ class ProfileList(generics.ListAPIView):
     """
     queryset = Profile.objects.annotate(
         posts_count=Count('owner__post', distinct=True),
+        adoptionposts_count=Count('owner__adoption', distinct=True),
         followers_count=Count('owner__followed', distinct=True),
         following_count=Count('owner__following', distinct=True)
     ).order_by('-created_at')
@@ -26,6 +27,7 @@ class ProfileList(generics.ListAPIView):
     ]
     ordering_fields = [
         'posts_count',
+        'adoptionposts_count',
         'followers_count',
         'following_count',
         'owner__following__created_at',
@@ -40,6 +42,7 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.annotate(
         posts_count=Count('owner__post', distinct=True),
+        adoptionposts_count=Count('owner__post', distinct=True),
         followers_count=Count('owner__followed', distinct=True),
         following_count=Count('owner__following', distinct=True)
     ).order_by('-created_at')
