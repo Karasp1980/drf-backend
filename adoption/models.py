@@ -27,7 +27,6 @@ class Adoption(models.Model):
     ]
 
     sex_choices = [
-    ('', ''),
     ('male_neutered', 'Male neutered'),
     ('male_unneutered', 'Male unnteuered'),
     ('female_spayed', 'Female spayed'),
