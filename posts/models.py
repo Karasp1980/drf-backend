@@ -44,7 +44,7 @@ class Post(models.Model):
     )
 
     category = models.CharField(
-        max_length=32, choices=category_choices, blank=True
+        max_length=32, choices=category_choices, default='tip'
     )
 
 

@@ -27,6 +27,7 @@ class Adoption(models.Model):
     ]
 
     sex_choices = [
+    ('', ''),
     ('male_neutered', 'Male neutered'),
     ('male_unneutered', 'Male unnteuered'),
     ('female_spayed', 'Female spayed'),
@@ -47,7 +48,7 @@ class Adoption(models.Model):
     )
 
     sex = models.CharField(
-        max_length=32, choices=sex_choices, blank=True
+        max_length=32, choices=sex_choices, default='male_neutered'
     )
 
 
