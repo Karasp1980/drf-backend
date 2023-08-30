@@ -3,6 +3,7 @@ from adoption.models import Adoption
 from adoptionlikes.models import Adoptionlike
 from adoptionrequest.models import Adoptionrequest
 
+
 class AdoptionSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -32,10 +33,11 @@ class AdoptionSerializer(serializers.ModelSerializer):
     def get_adoptionlike_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
-            adoptionlike = Adoptionlike.objects.filter(owner=user, adoption=obj).first()
+            adoptionlike = Adoptionlike.objects.filter(
+                owner=user,
+                adoption=obj).first()
             return adoptionlike.id if adoptionlike else None
         return None
-        
 
     class Meta:
         model = Adoption
@@ -43,6 +45,5 @@ class AdoptionSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
             'title', 'content', 'image', 'image_filter',
-            'adoptionlike_id', 'adoptionlikes_count', 'adoptioncomments_count', 
-            'breed', 'location', 'sex', 'age',
-        ]
+            'adoptionlike_id', 'adoptionlikes_count', 'adoptioncomments_count',
+            'breed', 'location', 'sex', 'age', ]

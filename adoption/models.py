@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
 class Adoption(models.Model):
     """
     Adoption model, related to 'owner', i.e. a User instance.
@@ -27,12 +26,10 @@ class Adoption(models.Model):
     ]
 
     sex_choices = [
-    ('male_neutered', 'Male neutered'),
-    ('male_unneutered', 'Male unnteuered'),
-    ('female_spayed', 'Female spayed'),
-    ('female_unspayed', 'Female unspayed'),
-    ]
-
+        ('male_neutered', 'Male neutered'),
+        ('male_unneutered', 'Male unnteuered'),
+        ('female_spayed', 'Female spayed'),
+        ('female_unspayed', 'Female unspayed'), ]
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -50,14 +47,11 @@ class Adoption(models.Model):
         max_length=32, choices=sex_choices, default='male_neutered'
     )
 
-
     location = models.CharField(max_length=255, blank=True)
 
     age = models.CharField(max_length=255, blank=True)
 
     breed = models.CharField(max_length=255, blank=True)
-
-   
 
     class Meta:
         ordering = ['-created_at']
