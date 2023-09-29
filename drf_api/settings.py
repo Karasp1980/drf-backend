@@ -65,7 +65,8 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOST'),
    'localhost', 
-   '8000-karasp1980-drfbackend-j5bulxyvz1o.ws-eu104.gitpod.io',
+   '8000-karasp1980-drfbackend-j5bulxyvz1o.ws-eu105.gitpod.io',
+   
 ]
 
 
