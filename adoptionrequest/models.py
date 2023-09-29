@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from profiles.models import Profile
 from adoption.models import Adoption
 
+
 class Adoptionrequest(models.Model):
     """
     Adoption request model, related to Profile
@@ -12,10 +13,15 @@ class Adoptionrequest(models.Model):
     name = models.TextField(max_length=255)
     phone = models.CharField(max_length=20)
     email = models.EmailField()
-    adoptionmessage = models.TextField(max_length=255)    
+    adoptionmessage = models.TextField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    adoption = models.ForeignKey(Adoption, on_delete=models.CASCADE, related_name="adoption")
+    adoption = models.ForeignKey(
+        Adoption,
+        on_delete=models.CASCADE,
+        related_name="adoption",
+        blank=True,
+        null=True)
 
     class Meta:
         ordering = ["-created_at"]

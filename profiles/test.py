@@ -9,8 +9,8 @@ class ProfileListViewTests(APITestCase):
     Tests for the Profile model list view
     """
     def setUp(self):
-        Karin = User.objects.create_user(username='Karin', password='password123')
-        Testuser = User.objects.create_user(username='Testuser', password='pass')
+        karin = User.objects.create_user(username='karin', password='letmein')
+        testson = User.objects.create_user(username='testson', password='pass')
         
     def test_profile_automatically_created_on_user_creation(self):
         response = self.client.get('/profiles/')
@@ -27,8 +27,8 @@ class ProfileDetailViewTests(APITestCase):
     Tests for the Profile model detail view
     """
     def setUp(self):
-        kelly = User.objects.create_user(username='Karin', password='password123')
-        greg = User.objects.create_user(username='Testuser', password='pass')
+        karin = User.objects.create_user(username='karin', password='letmein')
+        testson = User.objects.create_user(username='testson', password='pass')
 
     def test_cant_retrieve_profile_using_invalid_id(self):
         response = self.client.get('/profiles/999/')
@@ -39,20 +39,23 @@ class ProfileDetailViewTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_logged_in_user_can_update_own_profile(self):
-        self.client.login(username='Karin', password='password123')
+        self.client.login(username='karin', password='letmein')
         response = self.client.put(
-            '/profiles/1/', {'name': 'Karin '}
+            '/profiles/1/', {'name': 'Karin'}
         )
         profile = Profile.objects.filter(pk=1).first()
         self.assertEqual(profile.name, 'Karin')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_user_cant_update_someone_elses_profile(self):
-        self.client.login(username='Karin', password='password123')
+        self.client.login(username='karin', password='letmein')
         response = self.client.put(
-            '/profiles/2/', {'bio': 'I want to edit a bio'}
+            '/profiles/2/', {'bio': 'I want to edit Testsons bio'}
         )
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+
+   
 
    
 

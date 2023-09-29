@@ -2,7 +2,8 @@ from rest_framework import generics, permissions
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Adoptioncomment
-from .serializers import AdoptioncommentSerializer, AdoptioncommentDetailSerializer
+from .serializers import AdoptioncommentSerializer
+from .serializers import AdoptioncommentDetailSerializer
 
 
 class AdoptioncommentList(generics.ListCreateAPIView):

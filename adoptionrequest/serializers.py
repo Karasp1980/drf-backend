@@ -17,17 +17,15 @@ class AdoptionrequestSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
-    
-    
 
     class Meta:
         model = Adoptionrequest
-       
+
         fields = [
-            'id', 'owner', 'is_owner', 'name', 'phone', 'email', 'adoptionmessage', 'created_at',
-            'updated_at', 'profile', 'profile_id', 'profile_image','adoption'
+            'id', 'owner', 'is_owner', 'name', 'phone', 'email',
+            'adoptionmessage', 'created_at', 'updated_at', 'profile',
+            'profile_id', 'profile_image', 'adoption'
         ]
-   
 
 
 class AdoptionrequestDetailSerializer(AdoptionrequestSerializer):

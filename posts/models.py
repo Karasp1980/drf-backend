@@ -26,10 +26,9 @@ class Post(models.Model):
     ]
 
     category_choices = [
-    ('tip', 'Tip'),
-    ('help_needed', 'Help needed'),
-    ('other', 'Other'),
-    ]
+        ('tip', 'Tip'),
+        ('help_needed', 'Help needed'),
+        ('other', 'Other'), ]
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -46,7 +45,6 @@ class Post(models.Model):
     category = models.CharField(
         max_length=32, choices=category_choices, default='tip'
     )
-
 
     location = models.CharField(max_length=255, blank=True)
 

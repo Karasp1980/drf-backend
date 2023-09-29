@@ -12,14 +12,13 @@ class Adoptionlike(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     adoption = models.ForeignKey(
-        Adoption, related_name='adoptionlikes',on_delete=models.CASCADE, blank=True, null=True
-    )
+        Adoption, related_name='adoptionlikes',
+        on_delete=models.CASCADE, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    
 
     class Meta:
         ordering = ['-created_at']
-        unique_together = ['owner', 'adoption'] 
+        unique_together = ['owner', 'adoption']
 
     def __str__(self):
         return f'{self.owner} {self.adoption}'
